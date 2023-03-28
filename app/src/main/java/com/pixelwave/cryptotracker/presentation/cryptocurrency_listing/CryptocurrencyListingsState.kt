@@ -1,4 +1,9 @@
 package com.pixelwave.cryptotracker.presentation.cryptocurrency_listing
 
-class CryptocurrencyListingsState {
-}
+import com.pixelwave.cryptotracker.domain.model.CryptocurrencyListing
+
+data class CryptocurrencyListingsState (
+    val cryptocurrencies: List<CryptocurrencyListing> = emptyList(),
+    val isLoading: Boolean = false,
+    val isRefreshing: Boolean = false,
+)

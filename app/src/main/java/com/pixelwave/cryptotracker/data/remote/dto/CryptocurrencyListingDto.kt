@@ -1,7 +1,7 @@
 package com.pixelwave.cryptotracker.data.remote.dto
 
 data class CryptocurrencyListingDto(
-    val id: String,
+    val id: Int,
     val name: String,
     val symbol: String,
 )

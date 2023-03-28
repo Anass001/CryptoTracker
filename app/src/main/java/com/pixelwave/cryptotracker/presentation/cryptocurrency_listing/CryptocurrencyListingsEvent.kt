@@ -1,4 +1,5 @@
 package com.pixelwave.cryptotracker.presentation.cryptocurrency_listing
 
-class CryptocurrencyListingsEvent {
+sealed class CryptocurrencyListingsEvent {
+    object Refresh : CryptocurrencyListingsEvent()
 }

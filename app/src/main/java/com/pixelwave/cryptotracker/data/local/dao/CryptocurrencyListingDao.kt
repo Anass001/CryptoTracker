@@ -18,12 +18,6 @@ interface CryptocurrencyListingDao {
     @Query("DELETE FROM cryptocurrencylistingentity")
     suspend fun clearCryptocurrencyListings()
 
-    @Query(
-        """
-        SELECT * FROM cryptocurrencylistingentity
-        WHERE LOWER(name) LIKE '%' || LOWER(:query) || '%' OR
-        :query == UPPER(:query) == symbol
-    """
-    )
-    suspend fun searchCryptocurrencyListings(query: String): List<CryptocurrencyListing>
+    @Query("SELECT * FROM cryptocurrencylistingentity")
+    suspend fun getAllCryptocurrencyListings(): List<CryptocurrencyListingEntity>
 }
