@@ -8,5 +8,5 @@ data class CryptocurrencyListingEntity(
     @PrimaryKey
     val id: Int? = null,
     val name: String,
-    val symbol: String,
+    val symbol: String
 )

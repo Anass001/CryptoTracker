@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.room.Room
 import com.pixelwave.cryptotracker.data.local.CryptocurrencyDatabase
 import com.pixelwave.cryptotracker.data.remote.CryptocurrencyApi
+import com.pixelwave.cryptotracker.data.remote.adapter.CryptocurrencyListingAdapter
+import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -32,7 +34,17 @@ object AppModule {
         return Room.databaseBuilder(
             app,
             CryptocurrencyDatabase::class.java,
-            "cryptocurrency_db"
-        ).build()
+            "crypto_db"
+        )
+            .fallbackToDestructiveMigration()
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun providesMoshi(): Moshi {
+        return Moshi.Builder()
+            .add(CryptocurrencyListingAdapter())
+            .build()
     }
 }

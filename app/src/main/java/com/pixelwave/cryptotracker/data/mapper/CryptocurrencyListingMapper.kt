@@ -8,7 +8,7 @@ fun CryptocurrencyListingEntity.toCryptocurrencyListing(): CryptocurrencyListing
     return CryptocurrencyListing(
         id = id ?: 0,
         name = name,
-        symbol = symbol,
+        symbol = symbol
     )
 }
 
@@ -16,7 +16,7 @@ fun CryptocurrencyListing.toCryptocurrencyListingEntity(): CryptocurrencyListing
     return CryptocurrencyListingEntity(
         id = id,
         name = name,
-        symbol = symbol,
+        symbol = symbol
     )
 }
 
@@ -24,7 +24,7 @@ fun CryptocurrencyListingDto.toCryptocurrencyListing(): CryptocurrencyListing {
     return CryptocurrencyListing(
         id = id,
         name = name,
-        symbol = symbol,
+        symbol = symbol
     )
 }
 
@@ -32,6 +32,6 @@ fun CryptocurrencyListing.toCryptocurrencyListingDto(): CryptocurrencyListingDto
     return CryptocurrencyListingDto(
         id = id,
         name = name,
-        symbol = symbol,
+        symbol = symbol
     )
 }
