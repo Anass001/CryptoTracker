@@ -1,5 +1,6 @@
 package com.pixelwave.cryptotracker.data.remote
 
+import com.pixelwave.cryptotracker.data.remote.dto.CryptocurrencyListingDto
 import com.pixelwave.cryptotracker.data.remote.response.CryptocurrencyListingResponse
 import retrofit2.http.GET
 import retrofit2.http.Header

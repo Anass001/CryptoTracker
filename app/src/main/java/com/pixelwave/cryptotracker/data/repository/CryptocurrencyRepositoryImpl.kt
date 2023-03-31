@@ -8,6 +8,7 @@ import com.pixelwave.cryptotracker.data.remote.CryptocurrencyApi
 import com.pixelwave.cryptotracker.domain.model.CryptocurrencyListing
 import com.pixelwave.cryptotracker.domain.repository.CryptocurrencyRepository
 import com.pixelwave.cryptotracker.util.Resource
+import com.squareup.moshi.Moshi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
@@ -19,6 +20,7 @@ import javax.inject.Singleton
 class CryptocurrencyRepositoryImpl @Inject constructor(
     private val api: CryptocurrencyApi,
     private val db: CryptocurrencyDatabase,
+    private val moshi: Moshi
 ) : CryptocurrencyRepository {
 
     private val dao: CryptocurrencyListingDao = db.dao

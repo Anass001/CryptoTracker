@@ -4,8 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.pixelwave.cryptotracker.data.local.CryptocurrencyListingEntity
-import com.pixelwave.cryptotracker.domain.model.CryptocurrencyListing
+import com.pixelwave.cryptotracker.data.local.entity.CryptocurrencyListingEntity
 
 @Dao
 interface CryptocurrencyListingDao {

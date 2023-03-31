@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.room.Room
 import com.pixelwave.cryptotracker.data.local.CryptocurrencyDatabase
 import com.pixelwave.cryptotracker.data.remote.CryptocurrencyApi
-import com.pixelwave.cryptotracker.data.remote.adapter.CryptocurrencyListingAdapter
 import com.squareup.moshi.Moshi
 import dagger.Module
 import dagger.Provides
@@ -21,10 +20,10 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCryptocurrencyApi(): CryptocurrencyApi {
+    fun provideCryptocurrencyApi(moshi: Moshi): CryptocurrencyApi {
         return Retrofit.Builder()
             .baseUrl(CryptocurrencyApi.BASE_URL)
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
             .build().create()
     }
 
@@ -44,7 +43,6 @@ object AppModule {
     @Singleton
     fun providesMoshi(): Moshi {
         return Moshi.Builder()
-            .add(CryptocurrencyListingAdapter())
             .build()
     }
 }
