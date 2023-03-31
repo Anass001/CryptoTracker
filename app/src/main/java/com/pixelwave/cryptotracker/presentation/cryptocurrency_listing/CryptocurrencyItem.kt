@@ -10,7 +10,6 @@ import androidx.compose.material.icons.outlined.SouthEast
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.toLowerCase
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.pixelwave.cryptotracker.domain.model.CryptocurrencyListing
@@ -34,7 +33,10 @@ fun CryptocurrencyListingItem(
                 .weight(1f)
         ) {
             AsyncImage(
-                model = getResId(cryptocurrencyListing.symbol.lowercase(), com.pixelwave.cryptotracker.R.drawable::class.java),
+                model = getResId(
+                    cryptocurrencyListing.symbol.lowercase(),
+                    com.pixelwave.cryptotracker.R.drawable::class.java
+                ),
                 contentDescription = null,
                 modifier = Modifier
                     .padding(end = 16.dp)
@@ -52,6 +54,7 @@ fun CryptocurrencyListingItem(
                 Text(
                     text = cryptocurrencyListing.symbol,
                     style = MaterialTheme.typography.body1,
+                    color = MaterialTheme.colors.onBackground.copy(alpha = 0.6f),
                     fontWeight = androidx.compose.ui.text.font.FontWeight.Medium
                 )
             }

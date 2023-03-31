@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.pixelwave.cryptotracker.presentation.destinations.CryptocurrencyInfoScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
@@ -30,6 +31,11 @@ fun CryptocurrencyListingsScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .clickable {
+                            navigator.navigate(
+                                CryptocurrencyInfoScreenDestination(
+                                    symbol = cryptocurrency.symbol
+                                )
+                            )
                         }
                 )
             }
