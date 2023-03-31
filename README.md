@@ -1,4 +1,6 @@
 ## What's CryptoTracker?
+<img src="https://github.com/Anass001/CryptoTracker/blob/main/Screenshot%202023-03-20%20131417.png" align="right" width="300">
+
 CryptoTracker is an Android application for tracking cryptocurrency price changes.
 
 ## Used Libraries
@@ -8,7 +10,8 @@ CryptoTracker is an Android application for tracking cryptocurrency price change
  - [Kotlin Flows](https://developer.android.com/kotlin/flow) (Handling asynchronous streams of data)
  - [Jetpack Compose](https://developer.android.com/jetpack/compose) (Declarative UI)
  - [Kotlin Coroutines](https://github.com/Kotlin/kotlinx.coroutines) (Light-weight threads)
- - [Hilt](https://dagger.dev/hilt/) (Dependency Injection)
+ - [Hilt](https://dagger.dev/hilt/) (Dependency injection)
+ - [Coil](https://github.com/coil-kt/coil) (Image loading)
  - [Room](https://developer.android.com/topic/libraries/architecture/room) (Abstraction layer over SQLite)
  - [Retrofit](https://github.com/square/retrofit) (HTTP client)
  - [Moshi](https://github.com/square/moshi) (JSON parsing)
