@@ -14,6 +14,8 @@ CryptoTracker is an Android application for tracking cryptocurrency price change
  - [Retrofit](https://github.com/square/retrofit) (HTTP client)
  - [Moshi](https://github.com/square/moshi) (JSON parsing)
 
+<img src="" align="left" width="400">
+
 ## Architechture
 
 ## Licence
