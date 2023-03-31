@@ -57,9 +57,10 @@ fun CryptocurrencyListingItem(
             }
         }
         Column(modifier = Modifier) {
+            val priceFormat = DecimalFormat("$#,##0.00")
             val decimalFormat = DecimalFormat("#0.00")
             Text(
-                text = "$".plus(decimalFormat.format(cryptocurrencyListing.price)),
+                text = priceFormat.format(cryptocurrencyListing.price),
                 modifier = Modifier
                     .padding(bottom = 4.dp)
                     .align(Alignment.End),
@@ -77,7 +78,7 @@ fun CryptocurrencyListingItem(
                         .padding(horizontal = 4.dp)
                 )
                 Text(
-                    text = decimalFormat.format(cryptocurrencyListing.change),
+                    text = decimalFormat.format(cryptocurrencyListing.change).plus("%"),
                     color = if (cryptocurrencyListing.change < 0) Red else Green,
                     style = MaterialTheme.typography.body1,
                     fontWeight = androidx.compose.ui.text.font.FontWeight.Medium
