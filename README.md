@@ -1,5 +1,5 @@
 ## What's CryptoTracker?
-<img src="https://github.com/Anass001/CryptoTracker/blob/main/Screenshot%202023-03-20%20131417.png" align="right" width="300">
+<img src="https://github.com/Anass001/CryptoTracker/blob/main/main_screen.png" align="right" width="300">
 
 CryptoTracker is an Android application for tracking cryptocurrency price changes.
 
