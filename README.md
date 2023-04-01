@@ -17,4 +17,8 @@ CryptoTracker is an Android application for tracking cryptocurrency price change
 
 ## Architechture
 
+<img src="https://github.com/Anass001/CryptoTracker/blob/main/architecture.png" align="right" width="360">
+
+The application is designed as a single-activity app and implements the MVVM architecture, following the guidelines provided [here](https://developer.android.com/jetpack/docs/guide).
+
 ## Licence
