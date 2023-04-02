@@ -14,9 +14,22 @@ interface CryptocurrencyListingDao {
         cryptocurrencyListingEntities: List<CryptocurrencyListingEntity>
     )
 
+    @Query("UPDATE cryptocurrencylistingentity SET price = :price, change = :change WHERE symbol = :symbol")
+    suspend fun updateCryptocurrencyListing(
+        symbol: String,
+        price: Double,
+        change: Double
+    )
+
     @Query("DELETE FROM cryptocurrencylistingentity")
     suspend fun clearCryptocurrencyListings()
 
     @Query("SELECT * FROM cryptocurrencylistingentity")
     suspend fun getAllCryptocurrencyListings(): List<CryptocurrencyListingEntity>
+
+    @Query("SELECT * FROM cryptocurrencylistingentity WHERE symbol = :symbol")
+    suspend fun getCryptocurrencyListing(symbol: String): CryptocurrencyListingEntity?
+
+    @Query("UPDATE cryptocurrencylistingentity SET isFavorite = :isFavorite WHERE symbol = :symbol")
+    suspend fun updateFavorite(symbol: String, isFavorite: Boolean)
 }

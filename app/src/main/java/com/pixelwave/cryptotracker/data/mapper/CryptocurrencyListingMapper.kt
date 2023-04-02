@@ -12,7 +12,8 @@ fun CryptocurrencyListingEntity.toCryptocurrencyListing(): CryptocurrencyListing
         name = name,
         symbol = symbol,
         price = price,
-        change = change
+        change = change,
+        isFavorite = isFavorite
     )
 }
 
@@ -22,7 +23,8 @@ fun CryptocurrencyListing.toCryptocurrencyListingEntity(): CryptocurrencyListing
         name = name,
         symbol = symbol,
         price = price,
-        change = change
+        change = change,
+        isFavorite = isFavorite
     )
 }
 

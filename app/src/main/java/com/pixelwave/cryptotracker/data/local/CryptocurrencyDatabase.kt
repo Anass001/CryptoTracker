@@ -7,7 +7,7 @@ import com.pixelwave.cryptotracker.data.local.entity.CryptocurrencyListingEntity
 
 @Database(
     entities = [CryptocurrencyListingEntity::class],
-    version = 4,
+    version = 5,
     exportSchema = false,
 
     )

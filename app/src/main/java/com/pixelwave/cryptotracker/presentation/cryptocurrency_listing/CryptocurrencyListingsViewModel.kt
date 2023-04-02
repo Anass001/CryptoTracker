@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.pixelwave.cryptotracker.domain.repository.CryptocurrencyRepository
 import com.pixelwave.cryptotracker.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -39,6 +40,7 @@ class CryptocurrencyListingsViewModel @Inject constructor(
                 .collect { result ->
                     when (result) {
                         is Resource.Success -> {
+                            delay(1000L)
                             result.data?.let { listings ->
                                 state = state.copy(
                                     cryptocurrencies = listings
@@ -47,7 +49,7 @@ class CryptocurrencyListingsViewModel @Inject constructor(
                         }
                         is Resource.Error -> Unit //TODO
                         is Resource.Loading -> {
-                            state = state.copy(isLoading = true)
+                            state = state.copy(isLoading = result.isLoading)
                         }
                     }
                 }

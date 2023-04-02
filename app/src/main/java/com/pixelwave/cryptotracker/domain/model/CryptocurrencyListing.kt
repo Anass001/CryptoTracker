@@ -5,5 +5,6 @@ data class CryptocurrencyListing(
     val name: String,
     val symbol: String,
     val price: Double,
-    val change: Double
+    val change: Double,
+    val isFavorite: Boolean = false
 )

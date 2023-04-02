@@ -1,5 +1,6 @@
 package com.pixelwave.cryptotracker.data.repository
 
+import android.util.Log
 import com.pixelwave.cryptotracker.data.local.CryptocurrencyDatabase
 import com.pixelwave.cryptotracker.data.local.dao.CryptocurrencyListingDao
 import com.pixelwave.cryptotracker.data.mapper.toCryptocurrencyListing
@@ -47,8 +48,8 @@ class CryptocurrencyRepositoryImpl @Inject constructor(
             response?.let {
                 val data = it.map { item -> item.toOhlcvTimeseries() }
                 emit(Resource.Success(data))
+                emit(Resource.Loading(false))
             }
-            emit(Resource.Loading(false))
         }
     }
 
@@ -95,5 +96,16 @@ class CryptocurrencyRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun updateFavorite(symbol: String, isFavorite: Boolean) {
+        dao.updateFavorite(symbol, isFavorite)
+    }
 
+    override suspend fun getCryptocurrencyListing(symbol: String): Flow<Resource<CryptocurrencyListing>> {
+        val cryptocurrencyListing = dao.getCryptocurrencyListing(symbol)?.toCryptocurrencyListing()
+        return flow {
+            emit(Resource.Loading(true))
+            emit(Resource.Success(cryptocurrencyListing))
+            emit(Resource.Loading(false))
+        }
+    }
 }

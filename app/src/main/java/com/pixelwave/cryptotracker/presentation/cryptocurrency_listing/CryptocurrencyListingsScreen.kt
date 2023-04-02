@@ -1,11 +1,16 @@
 package com.pixelwave.cryptotracker.presentation.cryptocurrency_listing
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.LinearProgressIndicator
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.pixelwave.cryptotracker.presentation.destinations.CryptocurrencyInfoScreenDestination
@@ -39,6 +44,11 @@ fun CryptocurrencyListingsScreen(
                         }
                 )
             }
+        }
+    }
+    if (state.isLoading) {
+        Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.TopCenter) {
+            LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
         }
     }
 }

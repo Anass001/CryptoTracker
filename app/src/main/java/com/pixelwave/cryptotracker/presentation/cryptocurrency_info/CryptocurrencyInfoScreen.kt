@@ -1,14 +1,26 @@
 package com.pixelwave.cryptotracker.presentation.cryptocurrency_info
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.outlined.Favorite
+import androidx.compose.material.icons.outlined.NorthEast
+import androidx.compose.material.icons.outlined.SouthEast
+import androidx.compose.material.icons.outlined.Star
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.pixelwave.cryptotracker.presentation.VolumeChangeItem
+import com.pixelwave.cryptotracker.ui.theme.Green
+import com.pixelwave.cryptotracker.ui.theme.Red
+import com.pixelwave.cryptotracker.util.formatChange
+import com.pixelwave.cryptotracker.util.formatPrice
 import com.ramcosta.composedestinations.annotation.Destination
 
 @Composable
@@ -19,16 +31,64 @@ fun CryptocurrencyInfoScreen(
 ) {
 
     val state = viewModel.state
-
     if (state.error == null) {
-        state.data.let { data ->
+        Column {
+            if (state.cryptocurrencyListing != null) {
+                Row(
+                    Modifier
+                        .padding(16.dp)
+                ) {
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text(
+                            text = state.cryptocurrencyListing.name,
+                            style = MaterialTheme.typography.body1,
+                            color = MaterialTheme.colors.onBackground.copy(alpha = 0.6f),
+                            fontWeight = androidx.compose.ui.text.font.FontWeight.Medium
+                        )
+                        Text(
+                            text = state.cryptocurrencyListing.price.formatPrice(),
+                            style = MaterialTheme.typography.h4,
+                            fontWeight = androidx.compose.ui.text.font.FontWeight.Medium
+                        )
+                        VolumeChangeItem(
+                            change = state.cryptocurrencyListing.change,
+                            modifier = Modifier.align(Alignment.Start)
+                        )
+                    }
+                    IconButton(
+                        onClick = {
+                            viewModel.onToggleFavorite()
+                        }, modifier = Modifier
+                            .size(34.dp)
+                            .padding(horizontal = 4.dp)
+                            .align(Alignment.CenterVertically)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Outlined.Star,
+                            contentDescription = "is crypto favorite",
+                            tint = if (state.cryptocurrencyListing.isFavorite) Color.Red else Color.Gray,
+                        )
+                    }
+                }
+            }
+            state.data.let { data ->
+                if (data.isNotEmpty()) {
+                    PriceChart(
+                        data,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight(0.5f)
+                    )
+                }
+            }
         }
     }
+
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        if (state.isLoading && false) {
+        if (state.isLoading) {
             CircularProgressIndicator()
         } else if (state.error != null) {
             Text(
