@@ -15,24 +15,32 @@ CryptoTracker is an Android application for tracking cryptocurrency price change
  - [Retrofit](https://github.com/square/retrofit) (HTTP client)
  - [Moshi](https://github.com/square/moshi) (JSON parsing)
 
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-
 ## Architechture
 
-<img src="https://github.com/Anass001/CryptoTracker/blob/main/architecture.png" align="right" width="360">
-
 The application is designed as a single-activity app and implements the MVVM architecture, following the guidelines provided [here](https://developer.android.com/jetpack/docs/guide).
+
+<img src="https://github.com/Anass001/CryptoTracker/blob/main/architecture.png" align="left" width="360">
+
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
 
 ## API
 The application uses two APIs to retrieve data for its features:
 - [CoinMarketCap API](https://coinmarketcap.com/api/), which is used to obtain the latest market data for all active cryptocurrencies. This API provides information such as the current price, market capitalization, and volume change for each currency.
 - [CoinAPI](https://www.coinapi.io/), used to retrieve OHLCV data, which is then used to draw graphs for each cryptocurrency. OHLCV data provides a way to visualize the price movements of a particular asset over a specified period. 
-By using these two APIs, the application is able to provide users with up-to-date information about the cryptocurrency market and a graphical representation of the price trends for each currency.
