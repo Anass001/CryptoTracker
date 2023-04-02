@@ -1,7 +1,7 @@
 ## What's CryptoTracker?
 <img src="https://github.com/Anass001/CryptoTracker/blob/main/main_screen.png" align="right" width="300">
 
-CryptoTracker is an Android application for tracking cryptocurrency price changes.
+CryptoTracker is a demo Android application for tracking cryptocurrency price changes.
 
 ## Used Libraries
  - [Jetpack Compose](https://developer.android.com/jetpack/compose) (Decleartive UI)
