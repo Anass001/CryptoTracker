@@ -44,3 +44,6 @@ The application is designed as a single-activity app and implements the MVVM arc
 The application uses two APIs to retrieve data for its features:
 - [CoinMarketCap API](https://coinmarketcap.com/api/), which is used to obtain the latest market data for all active cryptocurrencies. This API provides information such as the current price, market capitalization, and volume change for each currency.
 - [CoinAPI](https://www.coinapi.io/), used to retrieve OHLCV data, which is then used to draw graphs for each cryptocurrency. OHLCV data provides a way to visualize the price movements of a particular asset over a specified period. 
+
+## Icons
+Icons by [spothq](https://github.com/spothq/cryptocurrency-icons)
