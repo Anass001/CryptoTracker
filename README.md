@@ -4,7 +4,7 @@
 CryptoTracker is a demo Android application for tracking cryptocurrency price changes.
 
 ## Used Libraries
- - [Jetpack Compose](https://developer.android.com/jetpack/compose) (Decleartive UI)
+ - [Jetpack Compose](https://developer.android.com/jetpack/compose) (Declartive UI)
  - [Compose Destinations](https://github.com/raamcosta/compose-destinations) (Screen transitions)
  - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) (Store and manage UI-related data)
  - [Kotlin Flows](https://developer.android.com/kotlin/flow) (Handling asynchronous streams of data)
