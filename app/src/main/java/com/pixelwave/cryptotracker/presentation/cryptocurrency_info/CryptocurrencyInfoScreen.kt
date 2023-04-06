@@ -1,25 +1,16 @@
 package com.pixelwave.cryptotracker.presentation.cryptocurrency_info
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.outlined.Favorite
-import androidx.compose.material.icons.outlined.NorthEast
-import androidx.compose.material.icons.outlined.SouthEast
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.pixelwave.cryptotracker.presentation.VolumeChangeItem
-import com.pixelwave.cryptotracker.ui.theme.Green
-import com.pixelwave.cryptotracker.ui.theme.Red
-import com.pixelwave.cryptotracker.util.formatChange
 import com.pixelwave.cryptotracker.util.formatPrice
 import com.ramcosta.composedestinations.annotation.Destination
 
@@ -66,7 +57,7 @@ fun CryptocurrencyInfoScreen(
                         Icon(
                             imageVector = Icons.Outlined.Star,
                             contentDescription = "is crypto favorite",
-                            tint = if (state.cryptocurrencyListing.isFavorite) Color.Red else Color.Gray,
+                            tint = if (state.cryptocurrencyListing.isFavorite) MaterialTheme.colors.primary else Color.Gray,
                         )
                     }
                 }

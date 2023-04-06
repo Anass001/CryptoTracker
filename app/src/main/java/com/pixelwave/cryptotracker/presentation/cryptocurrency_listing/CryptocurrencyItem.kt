@@ -63,7 +63,6 @@ fun CryptocurrencyListingItem(
             }
         }
         Column(modifier = Modifier) {
-            val decimalFormat = DecimalFormat("#0.00")
             Text(
                 text = cryptocurrencyListing.price.formatPrice(),
                 modifier = Modifier

@@ -1,5 +1,6 @@
 package com.pixelwave.cryptotracker.data.remote
 
+import com.pixelwave.cryptotracker.BuildConfig
 import com.pixelwave.cryptotracker.data.remote.dto.OHLCVTimeseriesDto
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -17,7 +18,7 @@ interface OHLCVApi {
     ): List<OHLCVTimeseriesDto>
 
     companion object {
-        const val API_KEY = "8E89DEB1-E595-4BC9-A7F8-7A5CBE5EDD35"
+        const val API_KEY = BuildConfig.COIN_API_KEY
         const val BASE_URL = "https://rest.coinapi.io"
     }
 }

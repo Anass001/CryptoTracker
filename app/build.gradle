@@ -18,10 +18,18 @@ kotlin {
     }
 }
 
+def apiPropertiesFile = rootProject.file("api.properties")
+def apiProperties = new Properties()
+apiProperties.load(new FileInputStream(apiPropertiesFile))
+
 android {
     compileSdk 32
 
     defaultConfig {
+
+        buildConfigField("String", "COIN_API_KEY", "\"${apiProperties.getProperty("coinApiKey")}\"")
+        buildConfigField("String", "COIN_MARKET_CAP_API_KEY", "\"${apiProperties.getProperty("coinMarketCapApiKey")}\"")
+
         applicationId "com.pixelwave.cryptotracker"
         minSdk 21
         targetSdk 32
@@ -32,6 +40,7 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
+
     }
 
     buildTypes {
@@ -59,6 +68,7 @@ android {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
     }
+
 }
 
 dependencies {

@@ -3,6 +3,7 @@ package com.pixelwave.cryptotracker.presentation.cryptocurrency_info
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -12,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.pixelwave.cryptotracker.domain.model.OHLCVTimeseries
+import com.pixelwave.cryptotracker.ui.theme.Green200
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -71,10 +73,14 @@ fun PriceChart(data: List<OHLCVTimeseries>, modifier: Modifier = Modifier) {
         val strokePath = Path().apply {
             moveTo(50f, size.height - 200f)
             graphData.forEachIndexed { index, item ->
-                lineTo(
-                    ((index).toFloat() * xSpacing) + 50f,
-                    size.height - ((item.toFloat()) * yRatio.toFloat()) - 200f
-                )
+                val x1 = ((index).toFloat() * xSpacing) + 50f
+                val y1 = size.height - ((item.toFloat()) * yRatio.toFloat()) - 200f
+
+                if (index != 0)
+                    lineTo(
+                        x1,
+                        y1
+                    )
             }
         }
 
@@ -90,7 +96,7 @@ fun PriceChart(data: List<OHLCVTimeseries>, modifier: Modifier = Modifier) {
             path = fillPath,
             brush = Brush.verticalGradient(
                 colors = listOf(
-                    Color.Green.copy(alpha = 0.5f),
+                    Green200.copy(alpha = 0.4f),
                     Color.Transparent
                 ),
                 endY = size.height - 100f
@@ -99,7 +105,7 @@ fun PriceChart(data: List<OHLCVTimeseries>, modifier: Modifier = Modifier) {
 
         drawPath(
             path = strokePath,
-            color = Color.Green,
+            color = Green200,
             style = Stroke(width = 10f)
         )
     }

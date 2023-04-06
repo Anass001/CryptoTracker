@@ -1,5 +1,7 @@
 package com.pixelwave.cryptotracker.data.remote
 
+import com.pixelwave.cryptotracker.BuildConfig
+import com.pixelwave.cryptotracker.data.remote.OHLCVApi.Companion.API_KEY
 import com.pixelwave.cryptotracker.data.remote.response.CryptocurrencyListingResponse
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -13,7 +15,7 @@ interface CryptocurrencyApi {
     ): CryptocurrencyListingResponse
 
     companion object {
-        const val API_KEY = "f5fa3ec3-bbe5-4137-8daf-99a8a59b456e"
+        const val API_KEY = BuildConfig.COIN_MARKET_CAP_API_KEY
         const val BASE_URL = "https://pro-api.coinmarketcap.com"
     }
 }

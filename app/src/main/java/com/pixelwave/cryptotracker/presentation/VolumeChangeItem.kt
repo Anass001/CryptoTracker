@@ -15,7 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.pixelwave.cryptotracker.ui.theme.Green
+import com.pixelwave.cryptotracker.ui.theme.Green200
 import com.pixelwave.cryptotracker.ui.theme.Red
+import com.pixelwave.cryptotracker.ui.theme.Red200
 import com.pixelwave.cryptotracker.util.formatChange
 
 @Composable
@@ -24,7 +26,7 @@ fun VolumeChangeItem(modifier: Modifier = Modifier, change: Double) {
         Icon(
             imageVector = if (change > 0) Icons.Outlined.NorthEast else Icons.Outlined.SouthEast,
             contentDescription = null,
-            tint = if (change < 0) Red else Green,
+            tint = if (change < 0) Red200 else Green200,
             modifier = Modifier
                 .size(24.dp)
                 .alignByBaseline()
@@ -32,7 +34,7 @@ fun VolumeChangeItem(modifier: Modifier = Modifier, change: Double) {
         )
         Text(
             text = change.formatChange(),
-            color = if (change < 0) Red else Green,
+            color = if (change < 0) Red200 else Green200,
             style = MaterialTheme.typography.body1,
             fontWeight = FontWeight.Medium
         )
