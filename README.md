@@ -4,7 +4,7 @@
 CryptoTracker is a demo Android application for tracking cryptocurrency price changes.
 
 ## Used Libraries
- - [Jetpack Compose](https://developer.android.com/jetpack/compose) (Decleartive UI)
+ - [Jetpack Compose](https://developer.android.com/jetpack/compose) (Declarative UI)
  - [Compose Destinations](https://github.com/raamcosta/compose-destinations) (Screen transitions)
  - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) (Store and manage UI-related data)
  - [Kotlin Flows](https://developer.android.com/kotlin/flow) (Handling asynchronous streams of data)
@@ -44,3 +44,6 @@ The application is designed as a single-activity app and implements the MVVM arc
 The application uses two APIs to retrieve data for its features:
 - [CoinMarketCap API](https://coinmarketcap.com/api/), which is used to obtain the latest market data for all active cryptocurrencies. This API provides information such as the current price, market capitalization, and volume change for each currency.
 - [CoinAPI](https://www.coinapi.io/), used to retrieve OHLCV data, which is then used to draw graphs for each cryptocurrency. OHLCV data provides a way to visualize the price movements of a particular asset over a specified period. 
+
+## Icons
+Icons by [spothq](https://github.com/spothq/cryptocurrency-icons)
