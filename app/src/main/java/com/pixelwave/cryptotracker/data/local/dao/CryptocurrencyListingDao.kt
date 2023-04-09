@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.pixelwave.cryptotracker.data.local.entity.CryptocurrencyListingEntity
+import com.pixelwave.cryptotracker.domain.model.CryptocurrencyListing
 
 @Dao
 interface CryptocurrencyListingDao {
@@ -24,8 +25,15 @@ interface CryptocurrencyListingDao {
     @Query("DELETE FROM cryptocurrencylistingentity")
     suspend fun clearCryptocurrencyListings()
 
-    @Query("SELECT * FROM cryptocurrencylistingentity")
-    suspend fun getAllCryptocurrencyListings(): List<CryptocurrencyListingEntity>
+    @Query(
+        """
+            SELECT * 
+            FROM cryptocurrencylistingentity
+            WHERE LOWER(name) LIKE '%' || LOWER(:query) || '%' OR
+                UPPER(:query) == symbol
+        """
+    )
+    suspend fun searchCryptocurrencyListings(query: String): List<CryptocurrencyListingEntity>
 
     @Query("SELECT * FROM cryptocurrencylistingentity WHERE symbol = :symbol")
     suspend fun getCryptocurrencyListing(symbol: String): CryptocurrencyListingEntity?

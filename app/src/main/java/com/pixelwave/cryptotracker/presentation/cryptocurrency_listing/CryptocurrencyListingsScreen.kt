@@ -28,6 +28,14 @@ fun CryptocurrencyListingsScreen(
     Column(
         modifier = Modifier.fillMaxSize()
     ) {
+        SearchBar(
+            searchQuery = state.searchQuery,
+            onSearchQueryChange = { query ->
+                viewModel.onEvent(
+                    CryptocurrencyListingsEvent.SearchQueryChanged(query)
+                )
+            }
+        )
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             items(state.cryptocurrencies.size) { i ->
                 val cryptocurrency = state.cryptocurrencies[i]

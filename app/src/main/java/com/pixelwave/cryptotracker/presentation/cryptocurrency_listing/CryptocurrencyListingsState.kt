@@ -6,4 +6,5 @@ data class CryptocurrencyListingsState (
     val cryptocurrencies: List<CryptocurrencyListing> = emptyList(),
     val isLoading: Boolean = false,
     val isRefreshing: Boolean = false,
+    val searchQuery: String = "",
 )

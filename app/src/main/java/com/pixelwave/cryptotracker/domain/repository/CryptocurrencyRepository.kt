@@ -13,6 +13,7 @@ interface CryptocurrencyRepository {
 
     suspend fun getCryptocurrencyListings(
         fetchFromRemote: Boolean,
+        searchQuery: String
     ): Flow<Resource<List<CryptocurrencyListing>>>
 
     suspend fun updateFavorite(symbol: String, isFavorite: Boolean)

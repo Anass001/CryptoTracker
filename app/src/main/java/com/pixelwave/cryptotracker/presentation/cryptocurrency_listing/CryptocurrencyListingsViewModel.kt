@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.pixelwave.cryptotracker.domain.repository.CryptocurrencyRepository
 import com.pixelwave.cryptotracker.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -18,6 +19,7 @@ class CryptocurrencyListingsViewModel @Inject constructor(
 ) : ViewModel() {
 
     var state by mutableStateOf(CryptocurrencyListingsState())
+    var searchJob: Job? = null
 
     init {
         getCryptocurrencyListings()
@@ -28,15 +30,24 @@ class CryptocurrencyListingsViewModel @Inject constructor(
             is CryptocurrencyListingsEvent.Refresh -> {
                 getCryptocurrencyListings(fetchFromRemote = true)
             }
+            is CryptocurrencyListingsEvent.SearchQueryChanged -> {
+                state = state.copy(searchQuery = event.query)
+                searchJob?.cancel()
+                searchJob = viewModelScope.launch {
+                    delay(500L)
+                    getCryptocurrencyListings()
+                }
+            }
         }
     }
 
     private fun getCryptocurrencyListings(
-        fetchFromRemote: Boolean = false
+        fetchFromRemote: Boolean = false,
+        searchQuery: String = state.searchQuery.lowercase()
     ) {
         viewModelScope.launch {
             repository
-                .getCryptocurrencyListings(fetchFromRemote)
+                .getCryptocurrencyListings(fetchFromRemote, searchQuery)
                 .collect { result ->
                     when (result) {
                         is Resource.Success -> {

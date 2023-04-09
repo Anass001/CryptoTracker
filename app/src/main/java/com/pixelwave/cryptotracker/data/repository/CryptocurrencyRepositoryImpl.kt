@@ -55,10 +55,11 @@ class CryptocurrencyRepositoryImpl @Inject constructor(
 
     override suspend fun getCryptocurrencyListings(
         fetchFromRemote: Boolean,
+        searchQuery: String
     ): Flow<Resource<List<CryptocurrencyListing>>> {
         return flow {
             emit(Resource.Loading(true))
-            val localListings = dao.getAllCryptocurrencyListings()
+            val localListings = dao.searchCryptocurrencyListings(searchQuery)
             emit(Resource.Success(data = localListings.map { it.toCryptocurrencyListing() }))
 
             val isDbEmpty = localListings.isEmpty()
@@ -89,7 +90,8 @@ class CryptocurrencyRepositoryImpl @Inject constructor(
                 })
                 emit(
                     Resource.Success(
-                        dao.getAllCryptocurrencyListings().map { it.toCryptocurrencyListing() })
+                        dao.searchCryptocurrencyListings(searchQuery)
+                            .map { it.toCryptocurrencyListing() })
                 )
                 emit(Resource.Loading(false))
             }
